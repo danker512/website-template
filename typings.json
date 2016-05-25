@@ -1,0 +1,10 @@
+{
+  "name": "my-template",
+  "dependencies": {},
+  "globalDependencies": {
+    "bootstrap": "registry:dt/bootstrap#3.3.5+20160316155526",
+    "dw-bxslider-4": "registry:dt/dw-bxslider-4#4.2.5+20160316155526",
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236",
+    "node": "registry:dt/node#6.0.0+20160523035754"
+  }
+}
