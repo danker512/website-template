@@ -11,7 +11,7 @@
   "license": "ISC",
   "browser": {
     "bxslider": "./node_modules/bxslider/dist/jquery.bxslider.js",
-    "bootstrap": "./node_modules/bxslider/dist/jquery.bxslider.js"
+    "bootstrap": "./node_modules/bootstrap/dist/js/bootstrap.js"
   },
   "browserify": {
     "transform": [
