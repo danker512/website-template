@@ -15,6 +15,13 @@ if [ $? -ne 0 ] ; then
 	ISERROR=1
 fi
 
+which typescript > /dev/null 2>&1
+if [ $? -ne 0 ] ; then
+	echo "command not found: typescript"
+	echo "please install typescript. e.g. npm install -g typescript"
+	ISERROR=1
+fi
+
 which typings > /dev/null 2>&1
 if [ $? -ne 0 ] ; then
 	echo "command not found: typings"
