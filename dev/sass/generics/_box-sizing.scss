@@ -1,13 +1,15 @@
 @charset "utf-8";
 
-html {
-    box-sizing: border-box;
-}
+@if $use-global-box-sizing == true {
+    html {
+        box-sizing: border-box;
+    }
 
-* {
-    &,
-    &:before,
-    &:after {
-        box-sizing: inherit;
+    * {
+        &,
+        &:before,
+        &:after {
+            box-sizing: inherit;
+        }
     }
 }

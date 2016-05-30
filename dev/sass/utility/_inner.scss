@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+.inner {
+    width: 100%;
+    padding: 0 15px;
+    @include respond-to(small) {
+        max-width: $break-s;
+        margin: 0 auto;
+    }
+    @include respond-to(middle) {
+        max-width: $break-m;
+    }
+    @include respond-to(large) {
+        max-width: $break-l;
+    }
+}

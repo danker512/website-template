@@ -1,5 +1,11 @@
 @charset "utf-8";
 
+// .example {
+//     font-size: 1.6rem;
+//     @include respond-to(small) {
+//        font-size: 2rem;
+//    }
+// }
 @mixin respond-to($media) {
     @if $media == x-small {
         @media print, screen and (min-width: $break-xs) {

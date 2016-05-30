@@ -7,11 +7,11 @@
 //------------------------------
 // @: Library
 //------------------------------
-@import "lib";
+//@import "lib";
 //------------------------------
 // @: Functions
 //------------------------------
-@import "functions";
+//@import "functions";
 //------------------------------
 // @: Mixin
 //------------------------------
@@ -22,18 +22,11 @@
 //------------------------------
 @import "generics/reset";
 @import "generics/normalize";
-
-@if use-global-box-sizing {
-    @import "generics/box-sizing";
-}
-
+@import "generics/wordpress";
+@import "generics/box-sizing";
 //------------------------------
 // @: Common Layouts
 //------------------------------
-@if use-wordpress {
-    @import "layouts/wordpress";
-}
-
 @import "layouts/header";
 @import "layouts/footer";
 @import "layouts/main";
@@ -45,17 +38,16 @@
 //------------------------------
 // @: Components
 //------------------------------
-@import "components/btn";
+//@import "components/btn";
 //------------------------------
 // @: Utility
 //------------------------------
-@import "utility/align";
 @import "utility/clearfix";
-@import "utility/display";
+//@import "utility/display";
 @import "utility/inner";
-@import "utility/margin";
-@import "utility/padding";
-@import "utility/position";
+//@import "utility/margin";
+//@import "utility/padding";
+//@import "utility/position";
 @import "utility/text";
 //------------------------------
 // @: for Print

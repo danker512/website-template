@@ -99,23 +99,31 @@ gulp.task('sass:public', function() {
         .pipe(gulp.dest(path.public + '/css'));
 });
 
-gulp.task('pleeease', function() {
+function execPleeease(isDevelop) {
     gulp.src(path.public + '/css/**/*.css')
         .pipe(pleeease({
             autoprefixer: {
                 browser: ['last 3 versions', 'Android 4.2']
             },
-            minifier: true
+            minifier: !isDevelop
         }))
         .pipe(gulp.dest(path.public + '/css'));
+}
+
+gulp.task('pleeease:dev', function() {
+    return execPleeease(true);
+});
+
+gulp.task('pleeease:public', function() {
+    return execPleeease(false);
 });
 
 gulp.task('css:dev', function(callback) {
-    return runSequence('sass:dev', 'pleeease', callback);
+    return runSequence('sass:dev', 'pleeease:dev', callback);
 });
 
 gulp.task('css:public', function(callback) {
-    return runSequence('sass:public', 'pleeease', callback);
+    return runSequence('sass:public', 'pleeease:public', callback);
 });
 
 /**
