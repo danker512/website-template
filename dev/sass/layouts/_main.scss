@@ -1,7 +1,6 @@
 @charset "utf-8";
 
 main {
-    @media print, screen and (min-width: $sm-width) {
-
+    @include respond-to(small) {
     }
 }

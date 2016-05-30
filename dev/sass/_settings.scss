@@ -8,22 +8,21 @@ $use-global-box-sizing: true !default;
 
 // ==============================
 // Variables
-// * width
+// * breakpoints
 // * font
 // * color
 // ==============================
 
-// width
-// use Grid Options of Bootstrap3 as a reference
-// http://getbootstrap.com/css/#grid
-$sm-width: 768px !default;
-$md-width: 992px !default;
-$lg-width: 1200px !default;
+// Breakpoints
+$break-xs: 480px !default;
+$break-s: 768px !default;
+$break-m: 1024px !default;
+$break-l: 1200px !default;
 
-// font
+// Font
 $font: -apple-system, Helvetica, 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', '游ゴシック', 'メイリオ', Meiryo, 'Lucida Grande', sans-serif !default;
 
-// color
+// Color
 $color: #333 !default;
 $background: #fff !default;
 $main-color: #fff !default;
