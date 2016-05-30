@@ -1,2 +1,26 @@
-node_modules/
-typings/
+### OSX ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+### Windows ###
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+### Node ###
+# Logs
+logs
+*.log
+npm-debug.log*
+
+### Sass ###
+.sass-cache/
+*.css.map
+
+### JavaScript ###
+*.js.map
+
+### Typings ###
+## Ignore downloaded typings
+typings
