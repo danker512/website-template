@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+// ==============================
+// Settings
+// ==============================
+$use-wordpress: false !default;
+$use-global-box-sizing: true !default;
+
+// ==============================
+// Variables
+// * width
+// * font
+// * color
+// ==============================
+
+// width
+// use Grid Options of Bootstrap3 as a reference
+// http://getbootstrap.com/css/#grid
+$sm-width: 768px !default;
+$md-width: 992px !default;
+$lg-width: 1200px !default;
+
+// font
+$font: -apple-system, Helvetica, 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', '游ゴシック', 'メイリオ' Meiryo, 'Lucida Grande', sans-serif !default;
+
+// color
+$color: #333 !default;
+$background: #fff !default;
+$main-color: #fff !default;
+$sub-color: #fff !default;
+$accent-color: #fff !default;
