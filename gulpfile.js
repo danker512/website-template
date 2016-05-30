@@ -89,7 +89,7 @@ gulp.task('sass:dev', function() {
     return gulp.src(path.dev + '/sass/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(path.public + '/css'));
 });
 
@@ -192,7 +192,7 @@ function execBrowserify(isDevelop) {
         return bundle
             .pipe(sourcemaps.init({loadMaps: true}))
             // .pipe(uglify())
-            .pipe(sourcemaps.write())
+            .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest(path.public + '/js'));
     } else {
         return bundle
