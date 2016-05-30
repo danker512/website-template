@@ -17,6 +17,8 @@ var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var browser = require('browser-sync');
 var del = require('del');
+var watch = require('gulp-watch');
+
 
 var path = {
     dev: './dev',
@@ -58,10 +60,14 @@ gulp.task('watch', ['ts:dev', 'sass:dev'], function() {
     browser.init({
         server: './public'
     });
-    gulp.watch(path.dev + '/ts/**/*.ts', ['ts:dev'], browser.reload);
-    gulp.watch(path.dev + '/sass/**/*.scss', ['sass:dev']);
-    gulp.watch(path.public + '/css/**/*.css', browser.reload);
-    gulp.watch(path.public + '/**/*.html', browser.reload);
+    watch(path.dev + '/ts/**/*.ts', ['ts:dev']);
+    watch(path.dev + '/sass/**/*.scss', ['sass:dev']);
+    watch([
+            path.public + '/css/**/*.css',
+            path.public + '/**/*.html',
+            path.public + 'js/**/*.js'
+        ],
+        browser.reload);
 });
 
 /**
