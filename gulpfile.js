@@ -1,24 +1,31 @@
+// Common
 var gulp = require('gulp');
-var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
-var pleeease = require('gulp-pleeease');
 var sourcemaps = require('gulp-sourcemaps');
+var watch = require('gulp-watch');
 var runSequence = require('run-sequence');
-var imagemin = require('gulp-imagemin');
-var ejs = require('gulp-ejs');
 var fs = require('fs');
-var ts = require('gulp-typescript');
-var tslint = require('gulp-tslint');
-
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var tsify = require('tsify');
-var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify');
 var browser = require('browser-sync');
 var del = require('del');
-var watch = require('gulp-watch');
 
+// Sass
+var sass = require('gulp-sass');
+var pleeease = require('gulp-pleeease');
+
+// Image
+var imagemin = require('gulp-imagemin');
+
+// EJS
+var ejs = require('gulp-ejs');
+
+// TypeScript
+var ts = require('gulp-typescript');
+var tslint = require('gulp-tslint');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var tsify = require('tsify');
+var uglify = require('gulp-uglify');
 
 var path = {
     dev: './dev',
@@ -163,7 +170,6 @@ gulp.task('ts:public', function(callback) {
 /**
  * Browserify
  */
-
 function execBrowserify(isDevelop) {
     var bundle = browserify({
         entries: path.dev + '/ts/main.ts',
@@ -196,7 +202,7 @@ gulp.task('browserify:public', function() {
 });
 
 /**
- * メイン
+ * Main
  */
 gulp.task('dev', function() {
     return runSequence('clean:dev', 'css:dev', 'ts:dev');
