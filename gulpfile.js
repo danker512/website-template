@@ -67,12 +67,16 @@ gulp.task('watch', ['ts:dev', 'sass:dev'], function() {
     browser.init({
         server: './public'
     });
-    watch(path.dev + '/ts/**/*.ts', ['ts:dev']);
-    watch(path.dev + '/sass/**/*.scss', ['sass:dev']);
+    watch([path.dev + '/ts/**/*.ts'], function() {
+        gulp.start('ts:dev');
+    });
+    watch([path.dev + '/sass/**/*.scss'], function() {
+        gulp.start('sass:dev');
+    });
     watch([
             path.public + '/css/**/*.css',
             path.public + '/**/*.html',
-            path.public + 'js/**/*.js'
+            path.public + '/js/**/*.js'
         ],
         browser.reload);
 });

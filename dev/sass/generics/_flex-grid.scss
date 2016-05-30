@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+@if $use-flexbox == true {
+    .flex-row {
+        display: flex;
+        flex: 0 1 auto;
+        flex-flow: row wrap;
+        //justify-content: space-around;
+        margin-left: -$flex-padding;
+        margin-right: -$flex-padding;
+    }
+    [class*="flex-xs-"], [class*="flex-sm-"], [class*="flex-md-"], [class*="flex-lg-"] {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        flex-grow: 1;
+        padding-left: $flex-padding;
+        padding-right: $flex-padding;
+    }
+    @for $i from 1 through 12 {
+        [class*="flex-xs-#{$i}"] {
+            flex-basis: (100% / (12/$i));
+            max-width: (100% / (12/$i));
+        }
+    }
+
+    @include respond-to(small) {
+        @for $i from 1 through 12 {
+            [class*="flex-sm-#{$i}"] {
+                flex-basis: (100% / (12/$i));
+                max-width: (100% / (12/$i));
+            }
+        }
+    }
+
+    @include respond-to(middle) {
+        @for $i from 1 through 12 {
+            [class*="flex-md-#{$i}"] {
+                flex-basis: (100% / (12/$i));
+                max-width: (100% / (12/$i));
+            }
+        }
+    }
+
+    @include respond-to(large) {
+        @for $i from 1 through 12 {
+            [class*="flex-lg-#{$i}"] {
+                flex-basis: (100% / (12/$i));
+                max-width: (100% / (12/$i));
+            }
+        }
+    }
+}

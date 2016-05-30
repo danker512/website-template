@@ -5,12 +5,14 @@
 // ==============================
 $use-wordpress: false !default;
 $use-global-box-sizing: true !default;
+$use-flexbox: true !default;
 
 // ==============================
 // Variables
 // * breakpoints
 // * font
 // * color
+// * flexbox
 // ==============================
 
 // Breakpoints
@@ -28,3 +30,6 @@ $background: #fff !default;
 $main-color: #fff !default;
 $sub-color: #fff !default;
 $accent-color: #fff !default;
+
+// Flexbox
+$flex-padding: 15px;
