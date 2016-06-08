@@ -2,64 +2,18 @@
 ///<reference path="../../typings/index.d.ts" />
 "use strict";
 // node_modules
+require("jquery");
 require("bxslider");
 require("bootstrap");
-// utility modules
-var ScrollModule = require("./util/jquery.scroll");
-// read jQuery
-var $ = require("jquery");
-$(document).ready(function () {
-    var scrollOption = {
-        elem: "a[href^='#']",
-        callback: scrollCallback
-    };
-    function scrollCallback() {
-        console.log("animated!!");
-    }
-    var scroll = new ScrollModule.Scroll(scrollOption);
-    $(".bxslider").bxSlider({
-        slideWidth: 400
+(function ($) {
+    $(document).ready(function () {
+        $(".bxslider").bxSlider({
+            slideWidth: 400
+        });
     });
-});
+}(jQuery));
 
-},{"./util/jquery.scroll":2,"bootstrap":3,"bxslider":4,"jquery":5}],2:[function(require,module,exports){
-"use strict";
-var $ = require("jquery");
-var Scroll = (function () {
-    function Scroll(ops) {
-        this.ops = ops;
-        this.$body = $("html, body");
-        this.$elem = $(ops.elem);
-        this.handleEvents();
-    }
-    Scroll.prototype.handleEvents = function () {
-        var _this = this;
-        this.$elem.on("click", function () {
-            _this.scroll();
-            return false;
-        });
-    };
-    Scroll.prototype.scroll = function () {
-        var _this = this;
-        var target = this.getTarget(this.$elem);
-        var topPosition = this.getOffsetTop(target);
-        this.$body.animate({
-            scrollTop: topPosition
-        }, this.ops.speed, this.ops.easing).promise().done(function () {
-            _this.ops.callback();
-        });
-    };
-    Scroll.prototype.getOffsetTop = function (target) {
-        return $(target).offset() ? $(target).offset().top : 0;
-    };
-    Scroll.prototype.getTarget = function ($elem) {
-        return $elem.attr("href");
-    };
-    return Scroll;
-}());
-exports.Scroll = Scroll;
-
-},{"jquery":5}],3:[function(require,module,exports){
+},{"bootstrap":2,"bxslider":3,"jquery":4}],2:[function(require,module,exports){
 (function (global){
 
 ; jQuery = global.jQuery = require("jquery");
@@ -2432,7 +2386,7 @@ if (typeof jQuery === 'undefined') {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"jquery":5}],4:[function(require,module,exports){
+},{"jquery":4}],3:[function(require,module,exports){
 (function (global){
 
 ; jQuery = global.jQuery = require("jquery");
@@ -4056,7 +4010,7 @@ if (typeof jQuery === 'undefined') {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"jquery":5}],5:[function(require,module,exports){
+},{"jquery":4}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.4
  * http://jquery.com/

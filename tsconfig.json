@@ -3,10 +3,15 @@
     "module": "commonjs",
     "target": "es5",
     "noImplicitAny": false,
-    "sourceMap": false
+    "sourceMap": true
   },
   "exclude": [
     "node_modules",
     "typings"
+  ],
+  "files": [
+    "typings/index.d.ts",
+    "dev/ts/main.ts",
+    "test/jquery.scroll.spec.ts"
   ]
 }
