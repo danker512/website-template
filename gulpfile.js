@@ -19,13 +19,12 @@ var imagemin = require('gulp-imagemin');
 var ejs = require('gulp-ejs');
 
 // TypeScript
-var ts = require('gulp-typescript');
+var webpack = require('gulp-webpack');
 var tslint = require('gulp-tslint');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var tsify = require('tsify');
 var uglify = require('gulp-uglify');
+var tsify = require('tsify');
+// var WebpackDevServer = require("webpack-dev-server");
+// var webpackConfig = require("./webpack.config.js");
 
 var path = {
     dev: './dev',
@@ -63,12 +62,12 @@ gulp.task('clean:public', function() {
  * Watch
  * browser
  */
-gulp.task('watch', ['ts:dev', 'sass:dev'], function() {
+gulp.task('watch', ['ts', 'sass:dev'], function() {
     browser.init({
         server: './public'
     });
     watch([path.dev + '/ts/**/*.ts'], function() {
-        gulp.start('ts:dev');
+        gulp.start('ts');
     });
     watch([path.dev + '/sass/**/*.scss'], function() {
         gulp.start('sass:dev');
@@ -160,6 +159,12 @@ gulp.task('ejs', function() {
  * tslint
  * ts
  */
+gulp.task('webpack', function() {
+  return gulp.src(path.dev + '/ts/main.ts')
+    .pipe(webpack( require('./webpack.config.js') ))
+    .pipe(gulp.dest(path.public + '/js'));
+});
+
 gulp.task('tslint', function() {
     return gulp.src([
             path.dev + '/**/*.ts',
@@ -171,54 +176,16 @@ gulp.task('tslint', function() {
         .pipe(tslint.report('verpose'));
 });
 
-gulp.task('ts:dev', function(callback) {
-    return runSequence('tslint', 'browserify:dev', callback);
-});
-
-gulp.task('ts:public', function(callback) {
-    return runSequence('tslint', 'browserify:public', callback);
-});
-
-/**
- * Browserify
- */
-function execBrowserify(isDevelop) {
-    var bundle = browserify({
-        entries: path.dev + '/ts/main.ts',
-        debug: isDevelop
-    })
-        .plugin(tsify)
-        .bundle()
-        .pipe(source('main.js'))
-        .pipe(buffer());
-
-    if(isDevelop) {
-        return bundle
-            .pipe(sourcemaps.init({loadMaps: true}))
-            // .pipe(uglify())
-            .pipe(sourcemaps.write('./'))
-            .pipe(gulp.dest(path.public + '/js'));
-    } else {
-        return bundle
-            .pipe(uglify())
-            .pipe(gulp.dest(path.public + '/js'));
-    }
-}
-
-gulp.task('browserify:dev', function() {
-    return execBrowserify(true);
-});
-
-gulp.task('browserify:public', function() {
-    return execBrowserify();
+gulp.task('ts', function(callback) {
+    return runSequence('tslint', 'webpack', callback);
 });
 
 /**
  * Main
  */
 gulp.task('dev', function() {
-    return runSequence('clean:dev', 'css:dev', 'ts:dev');
+    return runSequence('clean:dev', 'css:dev', 'ts');
 });
 gulp.task('public', function() {
-    return runSequence('clean:public', 'css:public', 'ts:public');
+    return runSequence('clean:public', 'css:public', 'ts');
 });

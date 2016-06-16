@@ -2,15 +2,9 @@
 
 "use strict";
 
-// node_modules
-require("jquery");
-require("bxslider");
-require("bootstrap");
+require("bxSlider");
+// require("bootstrap");
 
-(function ($) {
-    $(document).ready(function () {
-        $(".bxslider").bxSlider({
-            slideWidth: 400
-        });
-    });
-}(jQuery));
+$(".bxslider").bxSlider({
+  slideWidth: 400
+});

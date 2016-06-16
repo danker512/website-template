@@ -2,6 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
+    "outDir": "public/js",
     "noImplicitAny": false,
     "sourceMap": true
   },
@@ -11,7 +12,6 @@
   ],
   "files": [
     "typings/index.d.ts",
-    "dev/ts/main.ts",
-    "test/jquery.scroll.spec.ts"
+    "dev/ts/main.ts"
   ]
 }
