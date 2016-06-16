@@ -19,10 +19,7 @@
       "check-open-brace",
       "check-whitespace"
     ],
-    "quotemark": [
-      true,
-      "double"
-    ],
+    "quotemark": false,
     "semicolon": [
       true,
       "always"

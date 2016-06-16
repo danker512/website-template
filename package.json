@@ -4,37 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --inline --colors --progress --display-error-details --display-cached",
+    "watch": "npm run build -- --watch",
+    "server": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8080  --content-base public",
+    "start": "gulp watch"
   },
   "author": "TSHiYK",
   "license": "ISC",
-  "browser": {
-    "bxslider": "./node_modules/bxslider/dist/jquery.bxslider.js",
-    "bootstrap": "./node_modules/bootstrap/dist/js/bootstrap.js"
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  },
-  "browserify-shim": {
-    "./node_modules/jquery/dist/jquery.js": "global:$",
-    "bxslider": {
-      "depends": [
-        "jquery:jQuery"
-      ]
-    },
-    "bootstrap": {
-      "depends": [
-        "jquery:jQuery"
-      ]
-    }
-  },
   "devDependencies": {
     "browser-sync": "^2.12.8",
-    "browserify": "^13.0.1",
-    "browserify-shim": "^3.8.12",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-ejs": "^2.1.1",
@@ -44,14 +23,15 @@
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-tslint": "^5.0.0",
-    "gulp-typescript": "^2.13.4",
     "gulp-uglify": "^1.5.3",
     "gulp-watch": "^4.3.6",
+    "gulp-webpack": "^1.5.0",
     "run-sequence": "^1.1.5",
+    "ts-loader": "^0.8.2",
     "tsify": "^0.15.5",
     "tslint": "^3.10.2",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
