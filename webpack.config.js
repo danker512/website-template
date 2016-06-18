@@ -12,7 +12,11 @@ var config = {
       jQuery: 'jquery',
       $: 'jquery'
     }),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
   ],
   resolve: {
     extensions: ['', '.ts', '.js'],
@@ -25,7 +29,11 @@ var config = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: {test: /\.ts$/, loader: 'ts-loader' }}
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader?silent=true',
+        exclude: /node_modules/
+      }
     ]
   },
   devtool: '#source-map'

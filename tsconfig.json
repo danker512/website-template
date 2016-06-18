@@ -9,9 +9,5 @@
   "exclude": [
     "node_modules",
     "typings"
-  ],
-  "files": [
-    "typings/index.d.ts",
-    "dev/ts/main.ts"
   ]
 }
