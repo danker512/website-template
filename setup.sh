@@ -54,6 +54,7 @@ fi
 # remove
 # ##############################
 rm -rf node_modules typings .git
+rm -f dev/sass/demo.scss public/css/demo.css public/css/demo.css.map
 
 # ##############################
 # install
