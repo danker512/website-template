@@ -28,6 +28,9 @@ var config = {
     }
   },
   module: {
+    preLoaders: [
+      { test: /\.ts$/, loader: 'tslint-loader'}
+    ],
     loaders: [
       { test: /\.ts$/, loader: 'awesome-typescript-loader'}
     ]

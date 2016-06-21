@@ -20,11 +20,6 @@ var ejs = require('gulp-ejs');
 
 // TypeScript
 var webpack = require('gulp-webpack');
-var tslint = require('gulp-tslint');
-var uglify = require('gulp-uglify');
-var tsify = require('tsify');
-// var WebpackDevServer = require("webpack-dev-server");
-// var webpackConfig = require("./webpack.config.js");
 
 var path = {
     dev: './dev',
@@ -49,7 +44,6 @@ gulp.task('clean:map', function() {
         path.public + '/css/**/*.css.map'
     ]);
 });
-
 gulp.task('clean:dev', function() {
     return runSequence('clean:js', 'clean:css');
 });
@@ -62,12 +56,12 @@ gulp.task('clean:public', function() {
  * Watch
  * browser
  */
-gulp.task('watch', ['ts', 'sass:dev'], function() {
+gulp.task('watch', ['webpack', 'sass:dev'], function() {
     browser.init({
         server: './public'
     });
     watch([path.dev + '/ts/**/*.ts'], function() {
-        gulp.start('ts');
+        gulp.start('webpack');
     });
     watch([path.dev + '/sass/**/*.scss'], function() {
         gulp.start('sass:dev');
@@ -155,37 +149,20 @@ gulp.task('ejs', function() {
 });
 
 /**
- * TypeScript
- * tslint
- * ts
+ * Webpack
  */
 gulp.task('webpack', function() {
   return gulp.src(path.dev + '/ts/main.ts')
-    .pipe(webpack( require('./webpack.config.js') ))
+    .pipe(webpack( require("./webpack.config.js") ))
     .pipe(gulp.dest(path.public + '/js'));
-});
-
-gulp.task('tslint', function() {
-    return gulp.src([
-            path.dev + '/**/*.ts',
-            '!./typings/**/*.d.ts'
-        ])
-        .pipe(tslint({
-            configuration: './tslint.json'
-        }))
-        .pipe(tslint.report('verpose'));
-});
-
-gulp.task('ts', function(callback) {
-    return runSequence('tslint', 'webpack', callback);
 });
 
 /**
  * Main
  */
 gulp.task('dev', function() {
-    return runSequence('clean:dev', 'css:dev', 'ts');
+    return runSequence('clean:dev', 'css:dev', 'webpack');
 });
 gulp.task('public', function() {
-    return runSequence('clean:public', 'css:public', 'ts');
+    return runSequence('clean:public', 'css:public', 'webpack');
 });
