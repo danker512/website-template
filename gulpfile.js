@@ -7,6 +7,7 @@ var runSequence = require('run-sequence');
 var fs = require('fs');
 var browser = require('browser-sync');
 var del = require('del');
+var cache = require('gulp-cached');
 
 // Sass
 var sass = require('gulp-sass');
@@ -90,6 +91,7 @@ gulp.task('watch', ['webpack', 'sass:dev'], function() {
  */
 gulp.task('sass:dev', function() {
   return gulp.src(path.dev + '/sass/**/*.scss')
+    .pipe(cache('sass:dev'))
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write('./'))
@@ -148,6 +150,8 @@ gulp.task('ejs', function() {
   gulp.src([path.dev + '/template/**/*.ejs',
       '!' + path.dev + '/template/**/_*.ejs'
     ])
+    .pipe(cache('ejs'))
+    .pipe(plumber())
     .pipe(ejs({}, {
       ext: '.html'
     }))
@@ -159,6 +163,7 @@ gulp.task('ejs', function() {
  */
 gulp.task('html', function() {
   gulp.src(path.public + '/**/*.html')
+    .pipe(cache('htmlgul'))
     .pipe(plumber())
     .pipe(htmlHint())
     .pipe(htmlHint.failReporter());
