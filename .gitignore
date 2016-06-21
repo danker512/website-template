@@ -24,3 +24,6 @@ npm-debug.log*
 ### Typings ###
 ## Ignore downloaded typings
 typings
+
+### Others ###
+dev/test/coverage/
