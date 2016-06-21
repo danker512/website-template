@@ -2,9 +2,4 @@
 
 "use strict";
 
-require("bxSlider");
 require("bootstrap");
-
-$(".bxslider").bxSlider({
-  slideWidth: 400
-});

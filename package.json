@@ -42,13 +42,13 @@
     "run-sequence": "^1.1.5",
     "tslint": "^3.10.2",
     "tslint-loader": "^2.1.5",
+    "typescript": "^1.8.10",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
     "webpack-stream": "^3.2.0"
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "bxslider": "^4.2.6",
     "jquery": "^3.0.0"
   }
 }
