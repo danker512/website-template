@@ -3,7 +3,7 @@
 "use strict";
 
 require("bxSlider");
-// require("bootstrap");
+require("bootstrap");
 
 $(".bxslider").bxSlider({
   slideWidth: 400

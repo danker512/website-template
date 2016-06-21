@@ -19,7 +19,7 @@ var config = {
     })
   ],
   resolve: {
-    extensions: ['', '.ts', '.js'],
+    extensions: ['', '.ts', '.webpack.js', '.js'],
     alias: {
       'bxSlider': path.resolve(
         __dirname,
@@ -29,11 +29,7 @@ var config = {
   },
   module: {
     loaders: [
-      {
-        test: /\.ts$/,
-        loader: 'ts-loader?silent=true',
-        exclude: /node_modules/
-      }
+      { test: /\.ts$/, loader: 'awesome-typescript-loader'}
     ]
   },
   devtool: '#source-map'
