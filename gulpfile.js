@@ -19,7 +19,7 @@ var imagemin = require('gulp-imagemin');
 var ejs = require('gulp-ejs');
 
 // TypeScript
-var webpack = require('gulp-webpack');
+var webpack = require('webpack-stream');
 
 var path = {
     dev: './dev',
