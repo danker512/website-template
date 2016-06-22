@@ -1,6 +1,13 @@
-.demo .box {
-  height: 60px;
-  background: rgba(0, 0, 0, 0.22);
-  margin-bottom: 30px; }
+.demo {
+  font-family: 'Helvetica Neue', 'YuGothic', sans-serif;
+  padding: 40px 0; }
+  .demo h1 {
+    font-size: 3.2rem; }
+  .demo h2 {
+    font-size: 2.8rem; }
+  .demo .box {
+    height: 60px;
+    background: rgba(0, 0, 0, 0.22);
+    margin-bottom: 30px; }
 
 /*# sourceMappingURL=demo.css.map */

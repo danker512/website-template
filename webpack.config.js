@@ -21,9 +21,9 @@ var config = {
   resolve: {
     extensions: ['', '.ts', '.webpack.js', '.js'],
     alias: {
-      'bxSlider': path.resolve(
+      'bootstrap': path.resolve(
         __dirname,
-        'node_modules/bxslider/dist/jquery.bxslider.min.js'
+        'node_modules/bootstrap/dist/js/bootstrap.min.js'
       )
     }
   },
