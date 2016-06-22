@@ -13,6 +13,9 @@ var config = {
       $: 'jquery'
     }),
     new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: require('uglify-save-license')
+      },
       compress: {
         warnings: false
       }
