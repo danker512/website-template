@@ -163,9 +163,9 @@ gulp.task('ejs', function() {
  */
 gulp.task('html', function() {
   gulp.src(path.public + '/**/*.html')
-    .pipe(cache('htmlgul'))
+    .pipe(cache('html'))
     .pipe(plumber())
-    .pipe(htmlHint())
+    .pipe(htmlHint('./htmlhintrc.json'))
     .pipe(htmlHint.failReporter());
 });
 
