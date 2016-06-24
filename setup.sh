@@ -8,15 +8,6 @@ if [ $? -ne 0 ] ; then
 	ISERROR=1
 fi
 
-# eaglesakura/git-flow-hook
-# https://github.com/eaglesakura/git-flow-hook
-which git-flow-fook > /dev/null 2>&1
-if [ $? -ne 0 ] ; then
-	echo "command not found: git-flow-hook"
-	echo "please install git-flow-hook. see https://github.com/eaglesakura/git-flow-hook"
-	ISERROR=1
-fi
-
 which npm > /dev/null 2>&1
 if [ $? -ne 0 ] ; then
 	echo "command not found: npm"
@@ -62,6 +53,7 @@ rm -f dev/sass/demo.scss public/css/demo.css public/css/demo.css.map
 npm install
 typings install
 echo "INSTALL COMPLETE!!"
+
 
 # ##############################
 # Git
