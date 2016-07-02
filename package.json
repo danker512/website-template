@@ -27,7 +27,6 @@
     "gulp-progeny": "^0.3.1",
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-watch": "^4.3.6",
     "istanbul": "^0.4.4",
     "karma": "^0.13.22",
     "karma-chai": "^0.1.0",
