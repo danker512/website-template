@@ -2,12 +2,12 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
-var watch = require('gulp-watch');
 var runSequence = require('run-sequence');
 var fs = require('fs');
 var browser = require('browser-sync');
 var del = require('del');
 var cache = require('gulp-cached');
+var progeny = require('gulp-progeny');
 
 // Sass
 var sass = require('gulp-sass');
@@ -26,8 +26,8 @@ var htmlHint = require('gulp-htmlhint');
 var webpack = require('webpack-stream');
 
 var path = {
-  dev: './dev',
-  public: './public'
+  dev: 'dev',
+  public: 'public'
 };
 
 /**
@@ -64,21 +64,11 @@ gulp.task('watch', ['webpack', 'sass:dev'], function() {
   browser.init({
     server: './public'
   });
-  watch([path.dev + '/ts/**/*.ts'], function() {
-    gulp.start('webpack');
-  });
-  watch([path.dev + '/sass/**/*.scss'], function() {
-    gulp.start('sass:dev');
-  });
-  watch([path.public + '/**/*.html'], function() {
-    gulp.start('html');
-  });
-  watch([
-      path.public + '/css/**/*.css',
-      path.public + '/**/*.html',
-      path.public + '/js/**/*.js'
-    ],
-    browser.reload);
+  gulp.watch(path.dev + '/ts/**/*.ts', ['webpack']);
+  gulp.watch(path.dev + '/sass/**/*.scss', ['sass:dev']);
+  gulp.watch(path.public + '/**/*.html', ['html']).on('change', browser.reload);
+  gulp.watch(path.public + '/css/**/*.css').on('change', browser.reload);
+  gulp.watch(path.public + '/js/**/*.js').on('change', browser.reload);
 });
 
 /**
@@ -91,7 +81,8 @@ gulp.task('watch', ['webpack', 'sass:dev'], function() {
  */
 gulp.task('sass:dev', function() {
   return gulp.src(path.dev + '/sass/**/*.scss')
-    .pipe(cache('sass:dev'))
+    .pipe(cache('sass'))
+    .pipe(progeny())
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write('./'))
@@ -108,11 +99,12 @@ function execPleeease(isDevelop) {
   gulp.src(path.public + '/css/**/*.css')
     .pipe(pleeease({
       autoprefixer: {
-        browser: ['last 3 versions', 'Android 4.2']
+        browser: ['ie9', 'Android 4.2']
       },
       minifier: !isDevelop
     }))
-    .pipe(gulp.dest(path.public + '/css'));
+    .pipe(gulp.dest(path.public + '/css'))
+    .pipe(browser.stream());
 }
 
 gulp.task('pleeease:dev', function() {
