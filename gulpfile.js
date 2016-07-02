@@ -8,6 +8,7 @@ var fs = require('fs');
 var browser = require('browser-sync');
 var del = require('del');
 var cache = require('gulp-cached');
+var progeny = require('gulp-progeny');
 
 // Sass
 var sass = require('gulp-sass');
@@ -26,8 +27,8 @@ var htmlHint = require('gulp-htmlhint');
 var webpack = require('webpack-stream');
 
 var path = {
-  dev: './dev',
-  public: './public'
+  dev: 'dev',
+  public: 'public'
 };
 
 /**
@@ -91,7 +92,8 @@ gulp.task('watch', ['webpack', 'sass:dev'], function() {
  */
 gulp.task('sass:dev', function() {
   return gulp.src(path.dev + '/sass/**/*.scss')
-    .pipe(cache('sass:dev'))
+    .pipe(cache('sass'))
+    .pipe(progeny())
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write('./'))
@@ -108,7 +110,7 @@ function execPleeease(isDevelop) {
   gulp.src(path.public + '/css/**/*.css')
     .pipe(pleeease({
       autoprefixer: {
-        browser: ['last 3 versions', 'Android 4.2']
+        browser: ['ie9', 'Android 4.2']
       },
       minifier: !isDevelop
     }))
