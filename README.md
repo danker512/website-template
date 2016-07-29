@@ -1,6 +1,6 @@
 # Template for Website
 
-=========================
+Webサイトを作るときの個人用テンプレートです。
 
 ## Required / 必要なもの
 
@@ -12,28 +12,21 @@
 * typescript / npm install -g typings
 * typings / npm install -g typings
 
----
-
 ## How to use / 使い方
 
 * クローンしてきたら何はともあれ `./setup.sh`
     * download dependencies.
     * required *git-flow*, *npm*, *gulp*, *typescript*, *typings*.
 * 開発するときは `npm start`
-    * launch server
+    * launch server and files watch
 * テストするときは `npm test`
     * karma start
     * required *karma*, *mocha*, *chai*
-* テスト環境にアップロード・デプロイするときは `npm deploy:dev`
-
----
 
 ## Structure / 構成
 
-**dev** folder - contains source files.  
+**dev** folder - contains source files.
 **public** folder - contains production files.
-
----
 
 ## Source folder / 開発用フォルダ内
 
