@@ -20,6 +20,7 @@ var imagemin = require('gulp-imagemin');
 var ejs = require('gulp-ejs');
 
 // HTML
+var prettify = require('gulp-prettify');
 var htmlHint = require('gulp-htmlhint');
 
 // TypeScript
@@ -159,6 +160,19 @@ gulp.task('html', function() {
     .pipe(plumber())
     .pipe(htmlHint('./htmlhintrc.json'))
     .pipe(htmlHint.failReporter());
+});
+
+/**
+ * Format HTML
+ */
+gulp.task('prettify', function() {
+  gulp.src(path.public + '/**/*.html')
+    .pipe(cache('htmlFormat'))
+    .pipe(plumber())
+    .pipe(prettify({
+      indent_size: 2
+    }))
+    .pipe(gulp.dest(path.public))
 });
 
 /**
