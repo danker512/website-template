@@ -20,6 +20,7 @@ var imagemin = require('gulp-imagemin');
 var ejs = require('gulp-ejs');
 
 // HTML
+var prettify = require('gulp-prettify');
 var htmlHint = require('gulp-htmlhint');
 
 // TypeScript
@@ -151,14 +152,43 @@ gulp.task('ejs', function() {
 });
 
 /**
- *  Validate HTML
+ * check HTML
  */
 gulp.task('html', function() {
+  return runSequence('prettify', 'htmlHint');
+});
+
+/**
+ *  validate HTML
+ */
+gulp.task('htmlHint', function() {
   gulp.src(path.public + '/**/*.html')
-    .pipe(cache('html'))
+    .pipe(cache('htmlHint'))
     .pipe(plumber())
     .pipe(htmlHint('./htmlhintrc.json'))
     .pipe(htmlHint.failReporter());
+});
+
+/**
+ * format HTML
+ */
+gulp.task('prettify', function() {
+  gulp.src(path.public + '/**/*.html')
+    .pipe(cache('htmlFormat'))
+    .pipe(plumber())
+    .pipe(prettify({
+      indent_size: 2,
+      indent_char: ' ',
+      eol: '\\n',
+      end_with_newline: false,
+      preserve_newlines: true,
+      max_preserve_newlines: 1,
+      indent_inner_html: false,
+      brace_style: 'none',
+      unformatted: ['a', 'sub', 'sup', 'b', 'i', 'u'],
+      extra_liners: []
+    }))
+    .pipe(gulp.dest(path.public))
 });
 
 /**
