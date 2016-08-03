@@ -22,6 +22,9 @@ Webサイトを作るときの個人用テンプレートです。
 * テストするときは `npm test`
     * karma start
     * required *karma*, *mocha*, *chai*
+* 納品ファイルを作成（zipに）するときは `./mkzip.sh`
+    * All files? → y: public内全て、n: public内差分
+    * Enter commit ID → 差分元のコミットIDを `git log --oneline` などで調べおき入力する。
 
 ## Structure / 構成
 
