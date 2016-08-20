@@ -16,7 +16,7 @@
     "awesome-typescript-loader": "^2.2.1",
     "browser-sync": "^2.12.8",
     "chai": "^3.5.0",
-    "del": "^2.2.0",
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-cached": "^1.1.0",
     "gulp-ejs": "^2.1.1",
